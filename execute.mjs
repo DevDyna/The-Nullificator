@@ -8,11 +8,27 @@ main()
 
 async function main() {
     console.log('Reading file on folder')
-    let totfile = io.getAllFromDir('./files/')
-
+	console.log()
+	
+	        if (io.mkDir('files/')) {
+            console.log('Directory /files/ created')
+        } else {
+            console.log('Directory founded')
+        }
+		console.log()
+    let totfile = io.getAllFromDir('files/')
+	if(!totfile == []){
         totfile.forEach(file => {
-		io.mkFile('./files/'+file,'{}')
+		
+		console.log(file.replace(/\.[^/.]+$/, "")+' was eated!')
 
+		io.mkFile('./files/'+file,'{}')
+		
         })
+		console.log()
         console.log("THE END, GO AWAY!")
+		}else{
+			console.log('Nothing inside')
+		}
+		
 }
